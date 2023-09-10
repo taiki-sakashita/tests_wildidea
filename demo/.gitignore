@@ -3,9 +3,6 @@ target/
 !.mvn/wrapper/maven-wrapper.jar
 !**/src/main/**/target/
 !**/src/test/**/target/
-.vscode/
-.vscode/launch.json
-.vscode/settings.json
 
 ### STS ###
 .apt_generated
