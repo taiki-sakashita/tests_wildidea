@@ -8,7 +8,8 @@
     <h1>見出し</h1>
     <form method="POST" action="check" th:action="@{chkScreen}">
       <p>４桁の整数を入力してください</p>
-      <input type="text" name="number">
+      <input type="text" name="number" th:field="${checkForm.number}">
+      <p style="color: red;" th:errors="${checkForm.number}" class="error">テストエラーメッセージ</p>
       <input type="submit" value="確認画面へ">
     </form>
   </body>
