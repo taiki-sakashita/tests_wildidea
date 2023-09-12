@@ -10,12 +10,6 @@ import org.springframework.validation.annotation.Validated;
 
 @Controller
 public class InputPageController {
-  private final TesService tesService;
-
-  // TesserviceのDI
-  public InputPageController(TesService tesService) {
-    this.tesService = tesService;
-  }
 
   @ModelAttribute
   public CheckForm setUpForm() {
@@ -38,6 +32,8 @@ public class InputPageController {
     }
 
     String number = checkForm.getNumber();
+
+    tesService tesService = new tesServiceImpl();
     String name = tesService.findByNo(number);
 
     model.addAttribute("number", number);

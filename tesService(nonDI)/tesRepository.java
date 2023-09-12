@@ -1,6 +1,6 @@
 package com.example.demo.tesService;
 
-public interface TesRepository {
+public interface tesRepository {
 
   String searchByNo(String Number);
 }
