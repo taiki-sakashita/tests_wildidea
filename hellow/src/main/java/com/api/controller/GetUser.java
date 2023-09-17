@@ -1,15 +1,17 @@
-package com.api.hellow;
+package com.api.controller;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.api.model.UserResponse;
+
 @RestController
 @RequestMapping("/getUser")
 public class GetUser {
-  @GetMapping(value = "/hello")
-  public String hello() {
-    return "Hello World!";
+  @GetMapping("/hello")
+  public UserResponse hello() {
+    return new UserResponse("Alice", 25);
   }
 
 }
