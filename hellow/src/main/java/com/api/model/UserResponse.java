@@ -4,6 +4,10 @@ public class UserResponse {
   private String name;
   private int age;
 
+  public UserResponse() {
+
+  }
+
   public UserResponse(String name, int age) {
     this.name = name;
     this.age = age;
@@ -21,7 +25,7 @@ public class UserResponse {
     return age;
   }
 
-  public void setAge(int age){
+  public void setAge(int age) {
     this.age = age;
   }
 }
