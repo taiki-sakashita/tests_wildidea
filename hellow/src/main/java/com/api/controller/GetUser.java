@@ -23,17 +23,26 @@ public class GetUser {
 
   @GetMapping("/hello")
   public UserResponse hello(
-      @RequestParam(name = "name", defaultValue = "Alice") String name,
-      @RequestParam(name = "age", defaultValue = "26") int age) throws IOException {
+      @RequestParam(name = "name", required = false) String name,
+      @RequestParam(name = "age", required = false) Integer age) throws IOException {
 
     InputStream is = resource.getInputStream();
     JsonNode jsonNode = mapper.readTree(is);
 
     // クエリパラメータから値を取得して jsonNode を更新
     // ageOfCE(AgeOfContractExpirationの略)はageの値＋30として更新
-    ((ObjectNode) jsonNode).put("name", name);
-    ((ObjectNode) jsonNode).put("age", age);
-    ((ObjectNode) jsonNode).put("ageOfCE", age + 30);
+    if (name == null) {
+    } else {
+      ((ObjectNode) jsonNode).put("name", name);
+    }
+    if (age == null) {
+    } else {
+      ((ObjectNode) jsonNode).put("age", age);
+    }
+    if (age == null) {
+    } else {
+      ((ObjectNode) jsonNode).put("ageOfCE", age.intValue() + 30);
+    }
 
     UserResponse userResponse = mapper.treeToValue(jsonNode, UserResponse.class);
 
