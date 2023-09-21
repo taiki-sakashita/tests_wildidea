@@ -31,16 +31,13 @@ public class GetUser {
 
     // クエリパラメータから値を取得して jsonNode を更新
     // ageOfCE(AgeOfContractExpirationの略)はageの値＋30として更新
-    if (name == null) {
-    } else {
+    if (name != null) {
       ((ObjectNode) jsonNode).put("name", name);
     }
-    if (age == null) {
-    } else {
+    if (age != null) {
       ((ObjectNode) jsonNode).put("age", age);
     }
-    if (age == null) {
-    } else {
+    if (age != null) {
       ((ObjectNode) jsonNode).put("ageOfCE", age.intValue() + 30);
     }
 
