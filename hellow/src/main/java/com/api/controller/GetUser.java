@@ -29,8 +29,14 @@ public class GetUser {
     InputStream is = resource.getInputStream();
     JsonNode jsonNode = mapper.readTree(is);
 
-    // クエリパラメータから値を取得して jsonNode を更新
-    // ageOfCE(AgeOfContractExpirationの略)はageの値＋30として更新
+    updateJsonNode(jsonNode, name, age);
+
+    UserResponse userResponse = mapper.treeToValue(jsonNode, UserResponse.class);
+
+    return userResponse;
+  }
+
+  private void updateJsonNode(JsonNode jsonNode, String name, Integer age) {
     if (name != null) {
       ((ObjectNode) jsonNode).put("name", name);
     }
@@ -40,10 +46,5 @@ public class GetUser {
     if (age != null) {
       ((ObjectNode) jsonNode).put("ageOfCE", age.intValue() + 30);
     }
-
-    UserResponse userResponse = mapper.treeToValue(jsonNode, UserResponse.class);
-
-    return userResponse;
   }
-
 }
