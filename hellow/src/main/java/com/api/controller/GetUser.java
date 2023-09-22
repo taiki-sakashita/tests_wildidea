@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.api.model.UserResponse;
+import com.api.model.UserResponse.Membership;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ObjectNode;
@@ -24,19 +25,22 @@ public class GetUser {
   @GetMapping("/hello")
   public UserResponse hello(
       @RequestParam(name = "name", required = false) String name,
-      @RequestParam(name = "age", required = false) Integer age) throws IOException {
+      @RequestParam(name = "age", required = false) Integer age,
+      @RequestParam(name = "membership", required = false) Membership membership) throws IOException {
+    System.out.println(membership);
+    System.out.println(name);
 
     InputStream is = resource.getInputStream();
     JsonNode jsonNode = mapper.readTree(is);
 
-    updateJsonNode(jsonNode, name, age);
+    updateJsonNode(jsonNode, name, age, membership);
 
     UserResponse userResponse = mapper.treeToValue(jsonNode, UserResponse.class);
 
     return userResponse;
   }
 
-  private void updateJsonNode(JsonNode jsonNode, String name, Integer age) {
+  private void updateJsonNode(JsonNode jsonNode, String name, Integer age, Membership membership) {
     if (name != null) {
       ((ObjectNode) jsonNode).put("name", name);
     }
@@ -45,6 +49,10 @@ public class GetUser {
     }
     if (age != null) {
       ((ObjectNode) jsonNode).put("ageOfCE", age.intValue() + 30);
+    }
+    if (membership != null) {
+      ((ObjectNode) jsonNode).put("membership", membership.getValue());
+
     }
   }
 }

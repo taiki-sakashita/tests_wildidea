@@ -4,6 +4,7 @@ public class UserResponse {
   private String name;
   private int age;
   private int ageOfCE;
+  private Membership membership;
 
   public UserResponse() {
 
@@ -37,7 +38,46 @@ public class UserResponse {
 
   public void setAgeOfCE(int ageOfCE) {
     this.ageOfCE = ageOfCE;
-    
+
+  }
+
+  public Membership getMembership() {
+    return membership;
+  }
+
+  public void setMembership(Membership membership) {
+    this.membership = membership;
+  }
+
+  public enum Membership {
+    NOMEMBER(0, "メンバーではない"),
+    NORMAL(1, "一般"),
+    PREMIUM(2, "プレミアメンバー");
+
+    private final int value;
+    private final String viewName;
+
+    private Membership(int value, String viewName) {
+      this.value = value;
+      this.viewName = viewName;
+    }
+
+    public int getValue() {
+      return this.value;
+    }
+
+    public String getViewName() {
+      return this.viewName;
+    }
+  }
+
+  public static Membership toEnum(String value) {
+    for (var enumValue : Membership.values()) {
+      if (enumValue.getViewName().equals(value)) {
+        return enumValue;
+      }
+    }
+    return null;
   }
 
 }

@@ -1,5 +1,6 @@
 {
     "name": "Alice",
     "age": 25,
-    "ageOfCE": 55
+    "ageOfCE": 55,
+    "membership": 1
 }
