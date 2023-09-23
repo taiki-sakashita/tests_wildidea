@@ -2,7 +2,6 @@ package com.api.controller;
 
 import java.io.IOException;
 import java.io.InputStream;
-import java.util.logging.ConsoleHandler;
 
 import org.slf4j.LoggerFactory;
 import org.slf4j.Logger;
