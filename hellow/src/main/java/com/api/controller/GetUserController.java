@@ -34,7 +34,7 @@ public class GetUserController {
       @RequestParam(name = "membership", required = false) Membership membership) throws IOException {
     logger.info("名前:", name);
     logger.info("メンバーシップ:", membership);
-    JsonNode jsonNode = Try();
+    JsonNode jsonNode = readResorce();
 
     updateJsonNode(jsonNode, name, age, membership);
 
@@ -42,7 +42,7 @@ public class GetUserController {
 
   }
 
-  private JsonNode Try() throws IOException {
+  private JsonNode readResorce() throws IOException {
     try (InputStream is = resource.getInputStream()) {
       return mapper.readTree(is);
     }
