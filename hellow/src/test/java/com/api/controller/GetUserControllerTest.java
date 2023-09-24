@@ -24,10 +24,10 @@ public class GetUserControllerTest {
         .param("age", "25")
         .param("membershio", "NORMAL"))
         .andExpect(status().isOk())
-        .andExpect(jsonPath("$name").value("John"))
-        .andExpect(jsonPath("$age").value(25))
-        .andExpect(jsonPath("$ageOfCE").value(55))
-        .andExpect(jsonPath("$membership").value("NORMAL"));
+        .andExpect(jsonPath("$.name").value("John"))
+        .andExpect(jsonPath("$.age").value(25))
+        .andExpect(jsonPath("$.ageOfCE").value(55))
+        .andExpect(jsonPath("$.membership").value("NORMAL"));
 
   }
 }
